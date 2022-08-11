@@ -16,6 +16,10 @@
 }
 
 .title{
-  font-size: 5vw;
+  font-size: 5.5vw;
   text-decoration: underline;
+}
+
+.description{
+  font-size: 3vw;
 }
