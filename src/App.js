@@ -7,7 +7,7 @@ function App() {
 
   const [getCountry,setGetCountry] = useState('')
 
-  const [visible,setVisible] = useState(true)
+  const [results,setResults] = useState(false)
 
   const {data,isLoading,errorMessage} = useOpenWeather({
     key:'09837498dea54af38d04ed82007c8cdc',
@@ -19,7 +19,10 @@ function App() {
 
   return (
     <div className="App">
-      <div className='weather-component' style={visible ? {visibility:'hidden'} : {}}>
+      <div className='main' style={results ? {display:'none'} : {}}>
+      <span className='title'>Welcome to aqueous!</span>
+      </div>
+      <div className='weather-component' style={results ? {} : {display:'none'}}>
        <ReactWeather
           isLoading={isLoading}
           errorMessage={errorMessage}
