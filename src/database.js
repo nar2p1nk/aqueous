@@ -18,4 +18,5 @@ function getLatLong(nameOrCode){
     }
 }
 
+
 module.exports = getLatLong

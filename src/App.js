@@ -2,6 +2,8 @@ import React,{useEffect, useState} from 'react';
 import ReactWeather,{useOpenWeather} from 'react-open-weather';
 import './App.css';
 
+require('dotenv').config();
+
 function App() {
 
 
@@ -10,7 +12,7 @@ function App() {
   const [results,setResults] = useState(false)
 
   const {data,isLoading,errorMessage} = useOpenWeather({
-    key:'09837498dea54af38d04ed82007c8cdc',
+    key:process.env.API_KEY,
     lat:2.5,
     lon:112.5,
     lang:'en',
