@@ -1,6 +1,14 @@
 const db = require('better-sqlite3')(__dirname + '/countries.db');
 
 
+
+
+
+function getAllCountries(){
+    const all = db.prepare(`SELECT Country FROM countries;`).all();
+    return all;
+}
+
 function getLatLong(nameOrCode){
     if(nameOrCode.length === 2){
         nameOrCode = nameOrCode.toUpperCase()
@@ -18,4 +26,5 @@ function getLatLong(nameOrCode){
     }
 }
 
-module.exports = getLatLong
+
+module.exports = getAllCountries,getLatLong

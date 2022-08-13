@@ -1,9 +1,13 @@
 import React,{useEffect, useState} from 'react';
 import ReactWeather,{useOpenWeather} from 'react-open-weather';
+import getAllCountries from './database';
+import TextInput from 'react-autocomplete-input';
+import 'react-autocomplete-input/dist/bundle';
 import './App.css';
 
 function App() {
 
+  const [countries,setCountries] = useState([])
 
   const [countrynameOrCode,setCountryNameOrCode] = useState('')
 
@@ -26,6 +30,11 @@ function App() {
     event.preventDefault();
     console.log(countrynameOrCode)
   }
+
+  useEffect(()=>{
+    setCountries(getAllCountries())
+    console.log(countries)
+  })
 
   return (
     <div className="App">
