@@ -24,4 +24,4 @@ function getLatLong(nameOrCode){
 }
 
 
-module.exports = getAllCountries,getLatLong
+module.exports = {getAllCountries,getLatLong}
