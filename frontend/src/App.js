@@ -7,7 +7,7 @@ function App() {
 
   const [countriesNames,setCountriesNames] = useState([])
 
-  const [countrynameOrCode,setCountryNameOrCode] = useState('')
+  const [countryNameOrCode,setCountryNameOrCode] = useState('')
 
   const [results,setResults] = useState(false)
 
@@ -26,7 +26,13 @@ function App() {
 
   const onSubmitForm = (event) =>{
     event.preventDefault();
-    console.log(countrynameOrCode)
+    axios.post(
+      'http://localhost:8080/getLanLong',
+      {countryName:countryNameOrCode}
+    )
+      .then((res)=>{
+        console.log(res.data)
+      })
   }
   useEffect(()=>{
     axios.get('http://localhost:8080/allCountriesNames')
@@ -43,9 +49,9 @@ function App() {
         <p className="description">Get your current weather forecast now!</p>
         <form className='form' method='POST' onSubmit={(e)=>{onSubmitForm(e)}}>
           <Hint options={countriesNames} allowTabFill>
-            <input type="text" value={countrynameOrCode}
+            <input type="text" value={countryNameOrCode}
             onChange={(e) =>
-          {onChangeValue(e,countrynameOrCode,setCountryNameOrCode)}} /> 
+          {onChangeValue(e,countryNameOrCode,setCountryNameOrCode)}} /> 
           </Hint>
           <button value='post'>submit</button>
         </form>
