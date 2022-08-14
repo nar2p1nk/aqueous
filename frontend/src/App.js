@@ -1,9 +1,10 @@
 import React,{useEffect, useState} from 'react';
 import ReactWeather,{useOpenWeather} from 'react-open-weather';
 import './App.css';
-
+import axios from 'axios';
 function App() {
 
+  const [countriesNames,setCountriesNames] = useState([])
 
   const [countrynameOrCode,setCountryNameOrCode] = useState('')
 
@@ -26,7 +27,14 @@ function App() {
     event.preventDefault();
     console.log(countrynameOrCode)
   }
-
+  useEffect(()=>{
+    axios.get('http://localhost:8080/allCountriesNames')
+      .then((res)=>{
+        setCountriesNames(res.data)
+        console.log(countriesNames)
+        return;
+      })
+  },[null])
   return (
     <div className="App">
       <div className='main' style={results ? {display:'none'} : {}}>
