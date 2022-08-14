@@ -1,7 +1,8 @@
 import React,{useEffect, useState} from 'react';
 import ReactWeather,{useOpenWeather} from 'react-open-weather';
-import './App.css';
+import {Hint} from 'react-autocomplete-hint';
 import axios from 'axios';
+import './App.css';
 function App() {
 
   const [countriesNames,setCountriesNames] = useState([])
@@ -40,10 +41,12 @@ function App() {
       <div className='main' style={results ? {display:'none'} : {}}>
       <span className='title'>Welcome to aqueous!</span>
         <p className="description">Get your current weather forecast now!</p>
-        <form action="" method='POST' onSubmit={(e)=>{onSubmitForm(e)}}>
-          <input type="text" value={countrynameOrCode}
-          onChange={(e) =>
+        <form className='form' method='POST' onSubmit={(e)=>{onSubmitForm(e)}}>
+          <Hint options={countriesNames} allowTabFill>
+            <input type="text" value={countrynameOrCode}
+            onChange={(e) =>
           {onChangeValue(e,countrynameOrCode,setCountryNameOrCode)}} /> 
+          </Hint>
           <button value='post'>submit</button>
         </form>
       </div>

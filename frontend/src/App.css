@@ -23,3 +23,8 @@
 .description{
   font-size: 3vw;
 }
+.form{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
