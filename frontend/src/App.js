@@ -61,7 +61,7 @@ function App() {
             onChange={(e) =>
           {onChangeValue(e,countryNameOrCode,setCountryNameOrCode)}} /> 
           </Hint>
-          <button value='post'>submit</button>
+          <button className='form-submit' value='post'>submit</button>
         </form>
       </div>
       <div className='weather-component' style={results ? {} : {display:'none'}}>
