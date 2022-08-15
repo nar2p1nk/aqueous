@@ -9,12 +9,16 @@ function App() {
 
   const [countryNameOrCode,setCountryNameOrCode] = useState('')
 
+  const [countryLat,setCountryLat] = useState(16);
+
+  const [countryLon, setCountryLon] = useState(105);
+
   const [results,setResults] = useState(false)
 
   const {data,isLoading,errorMessage} = useOpenWeather({
     key:'09837498dea54af38d04ed82007c8cdc',
-    lat:2.5,
-    lon:112.5,
+    lat:countryLat,
+    lon:countryLon,
     lang:'en',
     unit:'metric'
   })
@@ -31,7 +35,11 @@ function App() {
       {countryName:countryNameOrCode}
     )
       .then((res)=>{
-        console.log(res.data)
+        setCountryLat(res.data.Latitude)
+        console.log('latitude',countryLat)
+        setCountryLon(res.data.Longitude)
+        console.log('longitude',countryLon)
+        setResults(true)
       })
   }
   useEffect(()=>{
@@ -62,7 +70,7 @@ function App() {
           errorMessage={errorMessage}
           data={data}
           lang="en"
-          locationLabel="Malaysia"
+          locationLabel={countryNameOrCode}
           unitsLabels={{ temperature: 'C', windSpeed: 'Km/h' }}
           showForecast
       />
