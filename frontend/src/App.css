@@ -1,0 +1,25 @@
+.App {
+  text-align: center;
+  height: 100%;
+  background-color: #71BCE1;/*
+  background-image: url('./images/wave-haikei.svg');
+  background-repeat: no-repeat;
+  background-size: 201vw;
+  background-position: bottom;*/
+  display: flex;
+  justify-content: center;
+}
+
+.main{
+  width: 100%;
+  margin: 100px 0 0 0;
+}
+
+.title{
+  font-size: 5.5vw;
+  text-decoration: underline;
+}
+
+.description{
+  font-size: 3vw;
+}
