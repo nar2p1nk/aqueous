@@ -1,6 +1,12 @@
 const app = require('express')();
 
+const bodyParser = require('body-parser');
 const model = require('./model.js');
+const cors = require('cors');
+
+app.use(cors())
+
+app.use(bodyParser.json())
 
 app.get('/',(req,res)=>{
     res.json({status:200})
@@ -13,6 +19,10 @@ app.get('/allCountriesNames',(req,res)=>{
         parsedNames.push(allCountries[country].Country);
     }
     res.json(parsedNames)
+})
+
+app.post('/getLanLong',(req,res)=>{
+    res.json(model.getLatLong(req.body.countryName))
 })
 
 
