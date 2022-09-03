@@ -32,7 +32,8 @@
 }
 
 .rah-input-wrapper, input{
-  width: 750px;
+  min-width: 400px;
+  max-width: 750px;
   height: 90%;
   font-size: large;
   border-radius: 10px;
@@ -45,4 +46,24 @@
   border: #1a1a1a;
   border-radius: 10px;
   padding: 10px 15px;
+  cursor: pointer;
 }
+
+.weather-component{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 40px;
+}
+
+.rw-container{
+  width: 60%;
+  max-height: 264px;
+}
+
+.form.after{
+  padding-top: 70px;
+  width: 100%;
+}
+

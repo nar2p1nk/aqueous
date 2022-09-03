@@ -9,6 +9,8 @@ function App() {
 
   const [countryNameOrCode,setCountryNameOrCode] = useState('')
 
+  const [displayCountryName,setDisplayCountryName] = useState('')
+
   const [countryLat,setCountryLat] = useState(16);
 
   const [countryLon, setCountryLon] = useState(105);
@@ -39,6 +41,7 @@ function App() {
         console.log('latitude',countryLat)
         setCountryLon(res.data.Longitude)
         console.log('longitude',countryLon)
+        setDisplayCountryName(countryNameOrCode)
         setResults(true)
       })
   }
@@ -70,10 +73,18 @@ function App() {
           errorMessage={errorMessage}
           data={data}
           lang="en"
-          locationLabel={countryNameOrCode}
+          locationLabel={displayCountryName}
           unitsLabels={{ temperature: 'C', windSpeed: 'Km/h' }}
           showForecast
-      />
+        />
+        <form className='form after' method='POST' onSubmit={(e)=>{onSubmitForm(e)}}>
+          <Hint options={countriesNames} allowTabFill>
+            <input type="text" value={countryNameOrCode}
+            onChange={(e) =>
+          {onChangeValue(e,countryNameOrCode,setCountryNameOrCode)}} /> 
+          </Hint>
+          <button className='form-submit' value='post'>submit</button>
+        </form>
       </div>
     </div>
   );
